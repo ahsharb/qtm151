@@ -68,3 +68,41 @@ SELECT * FROM drivers
 WHERE (lap_times >= 20) OR (lap_times <= 80);
 
 -- Submit the SQL queries for the questions above. 
+DROP TABLE IF EXISTS "drivers";
+ CREATE TABLE drivers (
+    driver_id INT PRIMARY KEY,
+    driver_name VARCHAR(100),
+    nationality VARCHAR(50),
+    lap_times INT
+);
+INSERT INTO drivers (driver_id, driver_name, nationality, lap_times) VALUES
+(1, 'Simon Cowell', 'British', 74),
+(2, 'Fernando Alonso', 'Spanish', 26),
+(3, 'Heinrich Bach', 'German', 82),
+(4, 'Giorgio Soprano', 'Spanish', 87),
+(5, 'Lewis Hamilton', 'British', 103),
+(6, 'Henry Louvre', 'British', 32),
+(7, 'Sebastian Vettel', 'German', 91),
+(8, 'Lukas Zech', 'German', 53),
+(9, 'Donic Kovak', 'German', 11),
+(10, 'Michael Holzmieter', 'German', 24);
+SELECT *
+FROM drivers;
+SELECT driver_name, nationality FROM drivers;
+SELECT * FROM drivers
+WHERE nationality = 'German';
+SELECT * FROM drivers
+WHERE lap_times > 50;
+SELECT nationality, COUNT(*) AS num_drivers
+FROM drivers
+GROUP BY nationality;
+SELECT MAX(lap_times) AS max_lap_time
+FROM drivers;
+SELECT driver_name, lap_times FROM drivers
+ORDER BY lap_times DESC;
+INSERT INTO drivers (driver_id, driver_name, nationality, lap_times)
+VALUES (11, 'Jenson Button', 'British', 45);
+SELECT AVG(lap_times) AS average_lap_time
+FROM drivers;
+SELECT * FROM drivers
+WHERE (lap_times >= 20) OR (lap_times <= 80);
